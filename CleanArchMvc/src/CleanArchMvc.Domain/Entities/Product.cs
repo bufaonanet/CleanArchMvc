@@ -13,12 +13,12 @@ namespace CleanArchMvc.Domain.Entities
         public int Stock { get; private set; }
         public string Image { get; private set; }
 
-        public int CategoryId { get; set; }
-        public ICollection<Category> Categories { get; set; }
+        public int CategoryId { get; private set; }
+        public ICollection<Category> Categories { get; private set; }
 
         public Product(int id, string name, string descrition, decimal price, int stock, string image)
         {
-            DomainExceptionValidation.When(id < 0, "Invalid Id");
+            DomainExceptionValidation.When(id < 0, "Invalid Id value");
             Id = id;
             ValidateDomain(name, descrition, price, stock, image);
         }
@@ -40,7 +40,7 @@ namespace CleanArchMvc.Domain.Entities
                 "Invalid name. Name is required!");
 
             DomainExceptionValidation.When(name.Length < 3,
-                "Invalid name. Minium  3 caracteres!");
+                "Invalid name, too short, minimum 3 characters");
 
             DomainExceptionValidation.When(string.IsNullOrEmpty(descrition),
                 "Invalid descrition. descrition is required!");
@@ -48,12 +48,12 @@ namespace CleanArchMvc.Domain.Entities
             DomainExceptionValidation.When(descrition.Length < 3,
                 "Invalid descrition. Minium  3 caracteres!");
 
-            DomainExceptionValidation.When(price < 0, "Invalid price value.");
+            DomainExceptionValidation.When(price < 0, "Invalid price value");
 
-            DomainExceptionValidation.When(stock < 0, "Invalid price value.");
+            DomainExceptionValidation.When(stock < 0, "Invalid stock value");
 
-            DomainExceptionValidation.When(image.Length > 250,
-                "Invalid image. Maximum 250 caracteres!");
+            DomainExceptionValidation.When(image?.Length > 250,
+                "Invalid image name, too long, maximum 250 characters");
 
             Name = name;
             Descrition = descrition;
