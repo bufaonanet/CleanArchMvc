@@ -14,7 +14,7 @@ namespace CleanArchMvc.Infra.Data.EntitiesConfiguration
                 .HasMaxLength(100)
                 .IsRequired();
 
-            builder.Property(p => p.Descrition)
+            builder.Property(p => p.Description)
                 .HasMaxLength(200)
                 .IsRequired();
 
