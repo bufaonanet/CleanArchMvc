@@ -36,8 +36,7 @@ namespace CleanArchMvc.WebUI
                 app.UseDeveloperExceptionPage();
             }
             else
-            {
-                app.UseExceptionHandler("/Home/Error");                
+            {               
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
@@ -51,7 +50,7 @@ namespace CleanArchMvc.WebUI
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Products}/{action=Index}/{id?}");
             });
         }
     }
