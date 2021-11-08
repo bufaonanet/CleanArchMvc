@@ -8,7 +8,7 @@ namespace CleanArchMvc.Domain.Interfaces
     {
         Task<Category> CreateAsync(Category category);
 
-        Task<Category> DeleteAsync(Category category);
+        Task<Category> RemoveAsync(Category category);
 
         Task<Category> GetByIdAsync(int? id);
 

@@ -14,7 +14,7 @@ namespace CleanArchMvc.Domain.Entities
         public string Image { get; private set; }
 
         public int CategoryId { get; private set; }
-        public ICollection<Category> Categories { get; private set; }
+        public Category Category { get; private set; }
 
         public Product(int id, string name, string descrition, decimal price, int stock, string image)
         {
