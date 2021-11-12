@@ -15,9 +15,9 @@ using System;
 
 namespace CleanArchMvc.Infra.IoC
 {
-    public static class DependencyInjection
+    public static class DependencyInjectionApi
     {
-        public static IServiceCollection AddInfrastructure(
+        public static IServiceCollection AddInfrastructureApi(
             this IServiceCollection service, IConfiguration configuration)
         {
             service.AddDbContext<ApplicationDBContext>(options =>
@@ -28,11 +28,7 @@ namespace CleanArchMvc.Infra.IoC
                 .AddEntityFrameworkStores<ApplicationDBContext>()
                 .AddDefaultTokenProviders();
 
-            service.ConfigureApplicationCookie(options =>
-                options.AccessDeniedPath = "/Account/Login");
-
-            service.AddScoped<IAuthenticate, AuthenticateService>();
-            service.AddScoped<ISeedUserRoleInicial, SeedUserRoleInitial>();
+            service.AddScoped<IAuthenticate, AuthenticateService>();         
 
             service.AddScoped<ICategoryRepository, CategoryRepository>();
             service.AddScoped<IProductRepository, ProductRepository>();
