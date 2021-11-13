@@ -1,16 +1,15 @@
 ﻿using CleanArchMvc.Application.DTOs;
 using CleanArchMvc.Application.Interfaces;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace CleanArchMvc.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProdutcsController : ControllerBase
     {
         private readonly IProductService _productService;
@@ -48,7 +47,7 @@ namespace CleanArchMvc.API.Controllers
 
             await _productService.Add(productDto);
 
-            return new CreatedAtRouteResult("GetProduct", 
+            return new CreatedAtRouteResult("GetProduct",
                 new { id = productDto.Id }, productDto);
         }
 
